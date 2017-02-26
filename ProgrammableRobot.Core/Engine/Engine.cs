@@ -56,6 +56,10 @@ namespace ProgrammableRobot.Core.Engine
             {
                 robot.RotateRight();
             }
+            else if (cur == Compiler.Action.MoveForward)
+            {
+                robot.MoveForward(world);
+            }
 
             return currentindex < instructions.Count;
         }

@@ -1,4 +1,5 @@
 ﻿using ProgrammableRobot.Core.Objects;
+using ProgrammableRobot.Core.Worlds;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,9 +26,24 @@ namespace ProgrammableRobot.Core.Actors
 
         public RobotDirection Direction { get; set; }
 
-        public void MoveForward()
+        public void MoveForward(BaseWorld world)
         {
-            
+            var newpos = Direction == RobotDirection.Up ? new Vector() { X = Position.X, Y = Position.Y - 1 }
+                : Direction == RobotDirection.Down ? new Vector() { X = Position.X, Y = Position.Y + 1 }
+                : Direction == RobotDirection.Left ? new Vector() { X = Position.X - 1, Y = Position.Y }
+                : new Vector() { X = Position.X + 1, Y = Position.Y };
+
+            // Case - prevent movement if we're leaving the world.
+            if (newpos.X > 9 || newpos.X < 0
+                || newpos.Y > 9 || newpos.Y < 0)
+                return;
+
+            // Case - prevent movement if there's an object in the way.
+            var obj = world.Actors.FirstOrDefault(x => x.Position.X == newpos.X && x.Position.Y == newpos.Y);
+            if (obj != null)
+                return;
+
+            Position = newpos;
         }
 
         public void RotateLeft()
@@ -65,9 +81,7 @@ namespace ProgrammableRobot.Core.Actors
                 newindex = curindex + 1;
             Direction = dirs[newindex];
         }
-
-
-
+        
         public override void Render(Graphics g)
         {
             var bitmap = new Bitmap(50, 50);

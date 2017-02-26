@@ -23,6 +23,10 @@ namespace ProgrammableRobot.Forms
 
             var sample = new StringBuilder()
                 .AppendLine("RotateLeft();")
+                .AppendLine("MoveForward();")
+                .AppendLine("RotateRight();")
+                .AppendLine("MoveForward();")
+                .AppendLine("RotateLeft();")
                 .ToString();
 
             textBox1.Text = sample;
@@ -45,7 +49,7 @@ namespace ProgrammableRobot.Forms
             {
                 errormessage.Text = "Running...";
                 timer = new Timer();
-                timer.Interval = 1000;
+                timer.Interval = 500;
                 timer.Tick += RenderAction;
                 timer.Enabled = true;
             }
