@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\BaseActor.cs" />
     <Compile Include="Actors\Robot.cs" />
+    <Compile Include="Actors\Wall.cs" />
     <Compile Include="Compiler\Action.cs" />
     <Compile Include="Compiler\CompileResult.cs" />
     <Compile Include="Compiler\RobotCompiler.cs" />
     <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Objects\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Worlds\BaseWorld.cs" />
     <Compile Include="Worlds\World1.cs" />

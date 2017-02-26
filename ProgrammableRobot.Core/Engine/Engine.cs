@@ -1,4 +1,5 @@
-﻿using ProgrammableRobot.Core.Compiler;
+﻿using ProgrammableRobot.Core.Actors;
+using ProgrammableRobot.Core.Compiler;
 using ProgrammableRobot.Core.Worlds;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace ProgrammableRobot.Core.Engine
         private readonly string input;
         private readonly RobotCompiler compiler;
         private List<Compiler.Action> instructions;
+        private int currentindex = 0;
 
         public Engine(BaseWorld world, string input)
         {
             this.world = world;
             this.input = input;
+            compiler = new RobotCompiler();
         }
 
         public string CompileInput()
@@ -31,7 +34,7 @@ namespace ProgrammableRobot.Core.Engine
 
         public Bitmap Render()
         {
-
+            return world.Render();
         }
 
         /// <summary>
@@ -40,7 +43,21 @@ namespace ProgrammableRobot.Core.Engine
         /// <returns></returns>
         public bool ExecuteNextAction()
         {
+            if (!instructions.Any())
+                return false;
+            var cur = instructions[currentindex++];
 
+            var robot = (Robot)world.Actors.FirstOrDefault(x => x is Robot);
+            if (cur == Compiler.Action.RotateLeft)
+            {
+                robot.RotateLeft();
+            }
+            else if (cur == Compiler.Action.RotateRight)
+            {
+                robot.RotateRight();
+            }
+
+            return currentindex < instructions.Count;
         }
     }
 }

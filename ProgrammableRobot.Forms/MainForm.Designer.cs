@@ -31,6 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.errormessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +59,16 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Run Program";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // errormessage
+            // 
+            this.errormessage.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.errormessage.AutoSize = true;
+            this.errormessage.Location = new System.Drawing.Point(732, 575);
+            this.errormessage.Name = "errormessage";
+            this.errormessage.Size = new System.Drawing.Size(0, 13);
+            this.errormessage.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -65,6 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1172, 605);
+            this.Controls.Add(this.errormessage);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
@@ -81,6 +93,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label errormessage;
     }
 }
 
