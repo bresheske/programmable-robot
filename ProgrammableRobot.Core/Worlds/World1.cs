@@ -50,7 +50,9 @@ namespace ProgrammableRobot.Core.Worlds
                 new Wall() { Position = new Objects.Vector() { X = 8, Y = 4 } },
                 new Wall() { Position = new Objects.Vector() { X = 9, Y = 4 } },
 
-                new Robot() { Position = new Objects.Vector() { X = 9, Y = 9 } }
+                new Robot() { Position = new Objects.Vector() { X = 9, Y = 9 } },
+
+                new BlueBall() { Position = new Objects.Vector() { X = 9, Y = 0 } },
             };
         }
     }

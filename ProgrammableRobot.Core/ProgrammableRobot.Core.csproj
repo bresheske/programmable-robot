@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\BaseActor.cs" />
+    <Compile Include="Actors\BlueBall.cs" />
     <Compile Include="Actors\Robot.cs" />
     <Compile Include="Actors\Wall.cs" />
     <Compile Include="Compiler\Action.cs" />

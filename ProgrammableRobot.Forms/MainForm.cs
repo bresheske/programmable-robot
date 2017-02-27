@@ -22,11 +22,11 @@ namespace ProgrammableRobot.Forms
             InitializeComponent();
 
             var sample = new StringBuilder()
-                .AppendLine("RotateLeft();")
                 .AppendLine("MoveForward();")
-                .AppendLine("RotateRight();")
                 .AppendLine("MoveForward();")
-                .AppendLine("RotateLeft();")
+                .AppendLine("MoveForward();")
+                .AppendLine("MoveForward();")
+                .AppendLine("MoveForward();")
                 .ToString();
 
             textBox1.Text = sample;
