@@ -21,24 +21,22 @@ namespace ProgrammableRobot.Forms
         {
             InitializeComponent();
 
-            var sample = new StringBuilder()
-                .AppendLine("MoveForward();")
-                .AppendLine("MoveForward();")
-                .AppendLine("MoveForward();")
-                .AppendLine("MoveForward();")
-                .AppendLine("MoveForward();")
-                .ToString();
+            listBox2.Items.AddRange(new Object[]
+            {
+                "World1",
+                "World2"
+            });
 
-            textBox1.Text = sample;
-
-            engine = new Engine(new World1(), textBox1.Text);
-            pictureBox1.Image = engine.Render();
+            listBox2.SelectedIndex = 0;
         }
+
+
 
         public void RunProgram()
         {
             errormessage.Text = string.Empty;
-            engine = new Engine(new World1(), textBox1.Text);
+            var world = GetWorld();
+            engine = new Engine(world, textBox1.Text);
             pictureBox1.Image = engine.Render();
             var compile = engine.CompileInput();
             if (!string.IsNullOrWhiteSpace(compile))
@@ -71,6 +69,30 @@ namespace ProgrammableRobot.Forms
         {
             var input = textBox1.Text;
             RunProgram();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var line = listBox1.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(line))
+                return;
+            textBox1.Text += (line + Environment.NewLine);
+        }
+
+        private BaseWorld GetWorld()
+        {
+            var str = listBox2.SelectedItem.ToString();
+            return str == "World1" ? new World1()
+                : str == "World2" ? new World2()
+                : null
+                as BaseWorld;
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var world = GetWorld();
+            engine = new Engine(world, textBox1.Text);
+            pictureBox1.Image = engine.Render();
         }
     }
 }
